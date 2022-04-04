@@ -1,0 +1,132 @@
+# cd ../../../Applications
+# cd ./gnuplot.app/Contents/macos/
+# ./gnuplot.sh
+# Hình 1_5_8a
+
+reset
+
+# Đặt SVG
+set terminal svg size 200, 200
+set output '1_5_8a.svg'
+
+#set title '????' font 'TimesNewRoman, 10'
+
+
+# ==== Những Nhẵn
+# tên hàm
+set label  'y = x^n' font 'TimesNewRoman, 10' at 0.2,1.8  front textcolor "#000000"  left
+set label  'n > 0' font 'TimesNewRoman, 10' at 0.2,1.6  front textcolor "#000000" left
+
+# tên điểm
+set label  '(0; 0)' font 'TimesNewRoman, 8' at -0.5,0  front textcolor "#000000" left
+set label  'Q = (1; 1)' font 'TimesNewRoman, 8' at 1.03,0.93  front textcolor "#000000" left
+set label  'A = (1; 0)' font 'TimesNewRoman, 8' at 1,-0.08  front textcolor "#000000" left
+set label  'B = (0; 1)' font 'TimesNewRoman, 8' at 0.03,1.08  front textcolor "#000000" left
+set label  'n = 10' font 'TimesNewRoman, 8' at 0.85,2.08  front textcolor "#000000" left
+set label  '4' font 'TimesNewRoman, 8' at 1.18,2.08  front textcolor "#000000" left
+set label  '3' font 'TimesNewRoman, 8' at 1.25,2.08  front textcolor "#000000" left
+set label  '2' font 'TimesNewRoman, 8' at 1.4,2.08  front textcolor "#000000" left
+set label  '3/2' font 'TimesNewRoman, 8' at 1.6,2.08  front textcolor "#000000" left
+set label  '1' font 'TimesNewRoman, 8' at 2.02,2.08  front textcolor "#000000" left
+set label  '2/3' font 'TimesNewRoman, 8' at 2.02,1.6  front textcolor "#000000" left
+set label  '1/2' font 'TimesNewRoman, 8' at 2.02,1.4  front textcolor "#000000" left
+set label  '1/3' font 'TimesNewRoman, 8' at 2.02,1.3  front textcolor "#000000" left
+set label  '1/4' font 'TimesNewRoman, 8' at 2.02,1.2  front textcolor "#000000" left
+set label  '1/10' font 'TimesNewRoman, 8' at 2.02,1.1  front textcolor "#000000" left
+
+#–
+
+# ===== Đồ Thị
+set style line 10 linecolor rgb '#80eeff' linetype 1 linewidth 0.5
+set grid back ls 10
+
+# ==== Trục
+# Phạm vi trục
+set xrange[0:2]
+set yrange[0:2]
+
+# Tên trục
+set label 'y' font 'TimesNewRoman, 10' at first 0, graph 1 offset -1,0.5 center
+set label 'x' font 'TimesNewRoman, 10' at graph 1, first 0 offset 1,-0.5 rotate by 1.5708 center
+
+# ==== Bước trục
+set border 0 back
+# set tics nomirror 
+#set zeroaxis
+set xtics 0.5
+set ytics 0.5
+set tics scale 0.0
+set format x ""
+set format y ""
+#unset xtics
+#unset ytics
+
+set style line 11 linecolor rgb '#4500d3' linetype 0 linewidth 0.8
+
+
+# Mũi tên kiểu 3 cho trục
+set arrow 3 from graph 0.0,0.0 to graph 1.05,0.0 size screen 0.025,15,60 \
+    filled ls 11 lt 1 lc '#9400d3'
+set arrow from graph 0.0,0 to graph 0.0,1.05 size screen 0.025,15,60 \
+    filled ls 11 lt 1 lc '#4500d3'
+
+# Phong Cách Điểm
+set pointsize 1.5
+set style line 15 lc rgb '#000000' pt 5   # square
+set style line 16 lc rgb '#000000' pt 7   # circle
+set style line 17 lc rgb '#0060ad' pt 9   # triangle
+
+# Điểm
+x0 = 1;    y0 = 0
+x1 = 1;    y1 = 1
+x2 = 0;    y2 = 1
+
+
+# ==== cho vẽ nét
+set arrow from 0,1 to 1,1 nohead lw 0.8 lt 0 lc '#000080'
+set arrow from 1,0 to 1,1 nohead lw 0.8 lt 0 lc '#000080'
+
+#set arrow from x2,0 to x2,y2 nohead lw 0.8 lt 0 lc '#000080'
+#set arrow from 0,y2 to x2,y2 nohead lw 0.8 lt 0 lc '#000080'
+
+# ==== Vẽ Hàm
+# Danh Sách Hàm
+set style line 1 linecolor rgb '#0000ff' linetype 1 linewidth 0.8
+set style line 2 linecolor rgb '#2f00cf' linetype 1 linewidth 0.8
+set style line 3 linecolor rgb '#6f00af' linetype 1 linewidth 0.8
+set style line 4 linecolor rgb '#7f007f' linetype 1 linewidth 0.8
+set style line 5 linecolor rgb '#cf004f' linetype 1 linewidth 0.8
+set style line 6 linecolor rgb '#ff002f' linetype 1 linewidth 0.8
+set style line 7 linecolor rgb '#cf2f00' linetype 1 linewidth 0.8
+set style line 8 linecolor rgb '#af4f00' linetype 1 linewidth 0.8
+set style line 9 linecolor rgb '#7f7f00' linetype 1 linewidth 0.8
+set style line 12 linecolor rgb '#4fcf00' linetype 1 linewidth 0.8
+set style line 13 linecolor rgb '#2fff00' linetype 1 linewidth 0.8
+
+f(x) = x**10
+g(x) = x**4
+h(x) = x**3
+i(x) = x**2
+j(x) = x**1.5
+k(x) = x**1
+l(x) = x**0.667
+m(x) = x**0.5
+n(x) = x**0.333
+o(x) = x**0.25
+p(x) = x**0.1
+
+# Vẽ
+plot f(x) notitle with lines ls 1, \
+     g(x) notitle with lines ls 2, \
+     h(x) notitle with lines ls 3, \
+     i(x) notitle with lines ls 4, \
+     j(x) notitle with lines ls 5, \
+     k(x) notitle with lines ls 6, \
+     l(x) notitle with lines ls 7, \
+     m(x) notitle with lines ls 8, \
+     n(x) notitle with lines ls 9, \
+     o(x) notitle with lines ls 12, \
+     p(x) notitle with lines ls 13, \
+      '+' using (x0):(y0) notitle w p ls 16 ps 0.3, \
+      '+' using (x1):(y1) notitle w p ls 16 ps 0.3, \
+      '+' using (x2):(y2) notitle w p ls 16 ps 0.3
