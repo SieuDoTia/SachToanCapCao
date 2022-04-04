@@ -1,0 +1,108 @@
+# cd ../../../Applications
+# cd ./gnuplot.app/Contents/macos/
+# ./gnuplot.sh
+# Hình 1_4_10
+
+reset
+
+# Đặt SVG
+set terminal svg size 200, 200
+set output '1_4_10.svg'
+
+#set title '????' font 'TimesNewRoman, 10'
+
+
+# ==== Những Nhẵn
+# tên hàm
+#set label  'y = (x - 1)^2 + 2' font 'TimesNewRoman, 10' at 1,2  front textcolor "#000000"  left
+
+# tên điểm
+set label  'A' font 'TimesNewRoman, 8' at 2.8,1.9  front textcolor "#000000" left
+set label  'B' font 'TimesNewRoman, 8' at 4.6,5.7  front textcolor "#000000" left
+set label  'M' font 'TimesNewRoman, 8' at 3.5,3.6  front textcolor "#000000" left
+set label  'N' font 'TimesNewRoman, 8' at 4.1,2.8  front textcolor "#000000" left
+set label  'x_1' font 'TimesNewRoman, 8' at 3,-0.3  front textcolor "#000000" left
+set label  'x_0' font 'TimesNewRoman, 8' at 4,-0.3  front textcolor "#000000" left
+set label  'x_2' font 'TimesNewRoman, 8' at 5,-0.3  front textcolor "#000000" left
+
+#–
+
+# ===== Đồ Thị
+set style line 10 linecolor rgb '#80eeff' linetype 1 linewidth 0.5
+set grid back ls 10
+
+# ==== Trục
+# Phạm vi trục
+set xrange[-2:6]
+set yrange[-2:6]
+
+# Tên trục
+set label 'y' font 'TimesNewRoman, 10' at first 0, graph 1 offset -1,0.5 center
+set label 'x' font 'TimesNewRoman, 10' at graph 1, first 0 offset 1,-0.5 rotate by 1.5708 center
+
+# ==== Bước trục
+set border 0 back
+# set tics nomirror 
+#set zeroaxis
+set xtics 1
+set ytics 1
+set tics scale 0.0
+set format x ""
+set format y ""
+#unset xtics
+#unset ytics
+
+set style line 4 linecolor rgb '#4500d3' linetype 0 linewidth 0.8
+
+
+# Mũi tên kiểu 3 cho trục
+set arrow 3 from graph 0.0,0.25 to graph 1.05,0.25 size screen 0.025,15,60 \
+    filled ls 4 lt 1 lc '#9400d3'
+set arrow from graph 0.25,0 to graph 0.25,1.05 size screen 0.025,15,60 \
+    filled ls 4 lt 1 lc '#4500d3'
+
+# Phong Cách Điểm
+set pointsize 1.5
+set style line 5 lc rgb '#000000' pt 5   # square
+set style line 6 lc rgb '#000000' pt 7   # circle
+set style line 7 lc rgb '#0060ad' pt 9   # triangle
+
+# Điểm
+x0 = 3;    y0 = 0                     # x_1
+x1 = 4;    y1 = 0                     # x_0
+x2 = 5;    y2 = 0                     # x_2
+x3 = 3;    y3 = 0.5*(3 - 2)**2 + 1    # A
+x4 = 4;    y4 = 0.5*(4 - 2)**2 + 1    # N
+x5 = 5;    y5 = 0.5*(5 - 2)**2 + 1    # B
+x6 = 4;    y6 = (y3 + y5)*0.5         # M
+
+
+# ==== cho vẽ nét
+set arrow from x0,0 to x0,y3 nohead lw 0.8 lt 0 lc '#000080'
+set arrow from x1,0 to x1,y6 nohead lw 0.8 lt 0 lc '#000080'
+set arrow from x2,0 to x2,y5 nohead lw 0.8 lt 0 lc '#000080'
+
+# nét đường thẳng
+k = (y5 - y3)/(x5 - x3)
+b = y3 - k*x3
+set arrow from 2.7,k*2.7+b to 5.3,k*5.3+b nohead lw 0.8 lt 1 lc '#ff001f'
+#set arrow from 0,y2 to x2,y2 nohead lw 0.8 lt 0 lc '#000080'
+
+# ==== Vẽ Hàm
+# Danh Sách Hàm
+set style line 1 linecolor rgb '#0000ff' linetype 1 linewidth 0.8
+set style line 2 linecolor rgb '#ff002f' linetype 1 linewidth 0.8
+set style line 3 linecolor rgb '#ff007f' linetype 1 linewidth 0.6
+
+f(x) = 0.5*(x - 2)**2 + 1
+
+
+# Vẽ
+plot f(x) notitle with lines ls 1, \
+      '+' using (x0):(y0) notitle w p ls 6 ps 0.3 lc rgb '#400080', \
+      '+' using (x1):(y1) notitle w p ls 6 ps 0.3 lc rgb '#400080', \
+      '+' using (x2):(y2) notitle w p ls 6 ps 0.3 lc rgb '#400080', \
+      '+' using (x3):(y3) notitle w p ls 6 ps 0.3 lc rgb '#000080', \
+      '+' using (x4):(y4) notitle w p ls 6 ps 0.3 lc rgb '#000080', \
+      '+' using (x5):(y5) notitle w p ls 6 ps 0.3 lc rgb '#000080', \
+      '+' using (x6):(y6) notitle w p ls 6 ps 0.3 lc rgb '#800010'
