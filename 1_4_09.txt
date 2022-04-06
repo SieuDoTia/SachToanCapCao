@@ -1,28 +1,30 @@
 # cd ../../../Applications
 # cd ./gnuplot.app/Contents/macos/
 # ./gnuplot.sh
-# Hình 1_4_08
+# Hình 1_4_09
 
 reset
 
 # Đặt SVG
 set terminal svg size 200, 200
-set output '1_4_08.svg'
+set output '1_4_09.svg'
 
 #set title '????' font 'TimesNewRoman, 10'
 
 
 # ==== Những Nhẵn
 # tên hàm
-#set label 'y = (x - 1)^2 + 2' font 'TimesNewRoman, 10' at 1,2  front textcolor "#000000"  left
+set label  'y = x^2' font 'TimesNewRoman, 10' at 1,5  front textcolor "#000000"  left
+set label  'y = –px – q_1' font 'TimesNewRoman, 10' at 1,4.0  front textcolor "#000000"  left
+set label  'y = –px – q_2' font 'TimesNewRoman, 10' at 2,3  front textcolor "#000000"  left
+set label  'y = –px – q_3' font 'TimesNewRoman, 10' at 2,2  front textcolor "#000000"  left
+
 
 # tên điểm
-set label '1' font 'TimesNewRoman, 8' at 3.8,6.2  front textcolor "#000000" left
-set label '3' font 'TimesNewRoman, 8' at 4.3,6.2  front textcolor "#000000" left
-set label '2' font 'TimesNewRoman, 8' at 4.6,6.2  front textcolor "#000000" left
+set label  '1' font 'TimesNewRoman, 8' at -3,-1.2  front textcolor "#000000" left
+set label  '2' font 'TimesNewRoman, 8' at -1.1,-1.2  front textcolor "#000000" left
+set label  '3' font 'TimesNewRoman, 8' at 0.1,-1.2  front textcolor "#000000" left
 
-set label 'x_1' font 'TimesNewRoman, 8' at 0.5,-0.3  front textcolor "#000000" left
-set label 'x_2' font 'TimesNewRoman, 8' at 3.3,-0.3  front textcolor "#000000" left
 
 #–
 
@@ -32,7 +34,7 @@ set grid back ls 10
 
 # ==== Trục
 # Phạm vi trục
-set xrange[-2:6]
+set xrange[-4:4]
 set yrange[-2:6]
 
 # Tên trục
@@ -57,7 +59,7 @@ set style line 4 linecolor rgb '#4500d3' linetype 0 linewidth 0.8
 # Mũi tên kiểu 3 cho trục
 set arrow 3 from graph 0.0,0.25 to graph 1.05,0.25 size screen 0.025,15,60 \
     filled ls 4 lt 1 lc '#9400d3'
-set arrow from graph 0.25,0 to graph 0.25,1.05 size screen 0.025,15,60 \
+set arrow from graph 0.5,0 to graph 0.5,1.05 size screen 0.025,15,60 \
     filled ls 4 lt 1 lc '#4500d3'
 
 # Phong Cách Điểm
@@ -67,9 +69,9 @@ set style line 6 lc rgb '#000000' pt 7   # circle
 set style line 7 lc rgb '#0060ad' pt 9   # triangle
 
 # Điểm
-x0 = 0.775;  y0 = 0    # x_1
-x1 = 2;    y1 = 0    
-x2 = 3.225;  y2 = 0    # x_2
+x0 = -0.870;  y0 = x0*x0
+x1 = 2.070;    y1 = x1*x1    
+x2 = 0.6;      y2 = x2*x2
 
 
 # ==== cho vẽ nét
@@ -82,16 +84,20 @@ x2 = 3.225;  y2 = 0    # x_2
 set style line 1 linecolor rgb '#0000ff' linetype 1 linewidth 0.8
 set style line 2 linecolor rgb '#007fff' linetype 1 linewidth 0.8
 set style line 3 linecolor rgb '#007f7f' linetype 1 linewidth 0.8
+set style line 4 linecolor rgb '#00ff7f' linetype 1 linewidth 0.8
 
-f(x) = (x - 2)**2 + 2.5
-g(x) = (x - 2)**2
-h(x) = (x - 2)**2 - 1.5
+f(x) = x**2
+g(x) = 1.2*x + 1.8
 
+b = 0.6*0.6 - 1.2*0.6
+h(x) = 1.2*x + b
+i(x) = 1.2*x - 1.8
 
 # Vẽ
 plot f(x) notitle with lines ls 1, \
      g(x) notitle with lines ls 2, \
      h(x) notitle with lines ls 3, \
+     i(x) notitle with lines ls 4, \
       '+' using (x0):(y0) notitle w p ls 6 ps 0.3 lc rgb '#000000', \
       '+' using (x1):(y1) notitle w p ls 6 ps 0.3 lc rgb '#000000', \
       '+' using (x2):(y2) notitle w p ls 6 ps 0.3 lc rgb '#000000'

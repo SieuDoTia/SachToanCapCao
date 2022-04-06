@@ -78,9 +78,9 @@ x6 = 4;    y6 = (y3 + y5)*0.5         # M
 
 
 # ==== cho vẽ nét
-set arrow from x0,0 to x0,y3 nohead lw 0.8 lt 0 lc '#000080'
-set arrow from x1,0 to x1,y6 nohead lw 0.8 lt 0 lc '#000080'
-set arrow from x2,0 to x2,y5 nohead lw 0.8 lt 0 lc '#000080'
+set arrow from x0,0 to x0,y3 nohead lw 0.6 lt 0 lc '#000080'
+set arrow from x1,0 to x1,y6 nohead lw 0.6 lt 0 lc '#000080'
+set arrow from x2,0 to x2,y5 nohead lw 0.6 lt 0 lc '#000080'
 
 # nét đường thẳng
 k = (y5 - y3)/(x5 - x3)
@@ -92,7 +92,7 @@ set arrow from 2.7,k*2.7+b to 5.3,k*5.3+b nohead lw 0.8 lt 1 lc '#ff001f'
 # Danh Sách Hàm
 set style line 1 linecolor rgb '#0000ff' linetype 1 linewidth 0.8
 set style line 2 linecolor rgb '#ff002f' linetype 1 linewidth 0.8
-set style line 3 linecolor rgb '#ff007f' linetype 1 linewidth 0.6
+set style line 3 linecolor rgb '#ff007f' linetype 1 linewidth 0.8
 
 f(x) = 0.5*(x - 2)**2 + 1
 

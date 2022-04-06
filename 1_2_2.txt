@@ -1,0 +1,75 @@
+# cd ../../../Applications
+# cd ./gnuplot.app/Contents/macos/
+# ./gnuplot.sh
+# Hình 1_2_2
+
+reset
+
+# Đặt SVG
+set terminal svg size 200, 200
+set output '1_2_2.svg'
+
+#set title 'Hệ Tọa Độ Descartes' font 'TimesNewRoman, 12'
+
+# Nhẵn Góc Tọa Độ
+set label  'I' font 'TimesNewRoman, 20' at 0.5,0.5  front textcolor "#0000a8" center
+set label 'II' font 'TimesNewRoman, 20' at -0.5,0.5  front  textcolor "#0000a8" center
+set label 'III' font 'TimesNewRoman, 20' at -0.5,-0.5  front textcolor "#0000a8" center
+set label 'IV' font 'TimesNewRoman, 20' at 0.5,-0.5  front textcolor "#0000a8" center
+
+# Nhẵn Âm Dương
+set label  '+' font 'TimesNewRoman, 12' at -0.1,0.9  front textcolor "#000000" center
+set label  '+' font 'TimesNewRoman, 12' at 0.1,0.9  front textcolor "#000000" center
+
+set label  '–' font 'TimesNewRoman, 12' at -0.1,-0.9  front textcolor "#000000" center
+set label  '–' font 'TimesNewRoman, 12' at 0.1,-0.9  front textcolor "#000000" center
+
+set label  '–' font 'TimesNewRoman, 12' at -0.9,-0.1  front textcolor "#000000" center
+set label  '+' font 'TimesNewRoman, 12' at -0.9,0.1  front textcolor "#000000" center
+
+set label  '–' font 'TimesNewRoman, 12' at 0.9,-0.1  front textcolor "#000000" center
+set label  '+' font 'TimesNewRoman, 12' at 0.9,0.1  front textcolor "#000000" center
+
+
+# ===== Đồ Thị
+set style line 2 linecolor rgb '#80eeff' linetype 1 linewidth 0.8
+set grid back ls 2
+
+# ==== Trục
+# Phạm vi trục
+set xrange[-1:1]
+set yrange[-1:1]
+
+# Tên trục
+set label 'y' font 'TimesNewRoman, 10' at first 0, graph 1 offset -1,0.5 center
+set label 'x' font 'TimesNewRoman, 10' at graph 1, first 0 offset 1,-0.5 rotate by 1.5708 center
+
+# ==== Bước trục
+set border 0 back
+# set tics nomirror 
+#set xtics 0.2
+#set ytics 0.2
+#set tics scale 0.0
+#set format x ""
+#set format y ""
+unset xtics
+unset ytics
+
+
+set style line 4 linecolor rgb '#4500d3' linetype 0 linewidth 0.8
+
+
+# ==== Mũi tên kiểu 3 cho trục
+set arrow 3 from graph 0.0,0.5 to graph 1.05,0.5 size screen 0.025,15,60 \
+    filled ls 4 lt 1 lc '#9400d3'
+set arrow from graph 0.5,0 to graph 0.5,1.05 size screen 0.025,15,60 \
+    filled ls 4 lt 1 lc '#4500d3'
+
+
+# ==== Vẽ Hàm
+# Hàm
+set style line 1 linecolor rgb '#ff001f' linetype 1 linewidth 1
+f(x) = x + 5   # Vẽ ngoài phạm vi cho không thấy
+
+# Vẽ
+plot f(x) notitle with lines ls 1

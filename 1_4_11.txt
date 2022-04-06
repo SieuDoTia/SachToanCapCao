@@ -79,13 +79,13 @@ x7 = x6;   y7 = 0.5*(y4+y5)
 
 
 # ==== cho vẽ nét
-set arrow from x1,0 to x1,y1 nohead lw 0.8 lt 0 lc '#000080'
-set arrow from x2,0 to x2,y2 nohead lw 0.8 lt 0 lc '#000080'
-set arrow from x0,0 to x0,y0 nohead lw 0.8 lt 0 lc '#000080'
+set arrow from x1,0 to x1,y1 nohead lw 0.6 lt 0 lc '#000080'
+set arrow from x2,0 to x2,y2 nohead lw 0.6 lt 0 lc '#000080'
+set arrow from x0,0 to x0,y0 nohead lw 0.6 lt 0 lc '#000080'
 
-set arrow from x4,0 to x4,y4 nohead lw 0.8 lt 0 lc '#000080'
-set arrow from x5,0 to x5,y5 nohead lw 0.8 lt 0 lc '#000080'
-set arrow from x7,0 to x7,y7 nohead lw 0.8 lt 0 lc '#000080'
+set arrow from x4,0 to x4,y4 nohead lw 0.6 lt 0 lc '#000080'
+set arrow from x5,0 to x5,y5 nohead lw 0.6 lt 0 lc '#000080'
+set arrow from x7,0 to x7,y7 nohead lw 0.6 lt 0 lc '#000080'
 
 # nét đường thẳng
 set arrow from x1,y1 to x2,y2 nohead lw 0.8 lt 1 lc '#ff001f'
@@ -95,7 +95,7 @@ set arrow from x4,y4 to x5,y5 nohead lw 0.8 lt 1 lc '#ff001f'
 # Danh Sách Hàm
 set style line 1 linecolor rgb '#0000ff' linetype 1 linewidth 0.8
 set style line 2 linecolor rgb '#ff002f' linetype 1 linewidth 0.8
-set style line 3 linecolor rgb '#ff007f' linetype 1 linewidth 0.6
+set style line 3 linecolor rgb '#ff007f' linetype 1 linewidth 0.8
 
 f(x) = 1/x
 
