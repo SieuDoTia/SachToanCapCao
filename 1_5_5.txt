@@ -72,17 +72,17 @@ x2 = 1;    y2 = 1
 x3 = -1.521;    y3 = -3.521
 
 # ==== cho vẽ nét
-#set arrow from x1,0 to x1,y1 nohead lw 0.8 lt 0 lc '#000080'
-#set arrow from 0,y1 to x1,y1 nohead lw 0.8 lt 0 lc '#000080'
+#set arrow from x1,0 to x1,y1 nohead lw 0.6 lt 0 lc '#000080'
+#set arrow from 0,y1 to x1,y1 nohead lw 0.6 lt 0 lc '#000080'
 
-#set arrow from x2,0 to x2,y2 nohead lw 0.8 lt 0 lc '#000080'
-#set arrow from 0,y2 to x2,y2 nohead lw 0.8 lt 0 lc '#000080'
+#set arrow from x2,0 to x2,y2 nohead lw 0.6 lt 0 lc '#000080'
+#set arrow from 0,y2 to x2,y2 nohead lw 0.6 lt 0 lc '#000080'
 
 # ==== Vẽ Hàm
 # Danh Sách Hàm
 set style line 1 linecolor rgb '#0000ff' linetype 1 linewidth 0.8
-set style line 2 linecolor rgb '#ff00ff' linetype 1 linewidth 0.6
-set style line 3 linecolor rgb '#ff007f' linetype 1 linewidth 0.6
+set style line 2 linecolor rgb '#ff00ff' linetype 1 linewidth 0.8
+set style line 3 linecolor rgb '#ff007f' linetype 1 linewidth 0.8
 
 f(x) = x**3
 g(x) = x

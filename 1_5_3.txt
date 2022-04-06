@@ -74,17 +74,17 @@ x4 = -0.577;   y4 = -(0.577**3 - 0.577)
 
 
 # ==== cho vẽ nét
-set arrow from x3,0 to x3,y3 nohead lw 0.8 lt 0 lc '#000080'
-set arrow from x4,0 to x4,y4 nohead lw 0.8 lt 0 lc '#000080'
+set arrow from x3,0 to x3,y3 nohead lw 0.6 lt 0 lc '#000080'
+set arrow from x4,0 to x4,y4 nohead lw 0.6 lt 0 lc '#000080'
 
-#set arrow from x2,0 to x2,y2 nohead lw 0.8 lt 0 lc '#000080'
-#set arrow from 0,y2 to x2,y2 nohead lw 0.8 lt 0 lc '#000080'
+#set arrow from x2,0 to x2,y2 nohead lw 0.6 lt 0 lc '#000080'
+#set arrow from 0,y2 to x2,y2 nohead lw 0.6 lt 0 lc '#000080'
 
 # ==== Vẽ Hàm
 # Danh Sách Hàm
 set style line 1 linecolor rgb '#0000ff' linetype 1 linewidth 0.8
 set style line 2 linecolor rgb '#ff002f' linetype 1 linewidth 0.8
-set style line 3 linecolor rgb '#ff007f' linetype 1 linewidth 0.6
+set style line 3 linecolor rgb '#ff007f' linetype 1 linewidth 0.8
 
 f(x) = x**3 - x
 #g(x) = x**3 + x**2
