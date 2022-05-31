@@ -1,0 +1,112 @@
+# cd ../../../Applications
+# cd ./gnuplot.app/Contents/macos/
+# ./gnuplot.sh
+# Hình 1_9_5
+
+reset
+
+# Đặt SVG
+set terminal svg size 200, 200
+set output '1_9_5.svg'
+
+#set title 'Hệ Tọa Độ Descartes' font 'TimesNewRoman, 12'
+
+# ==== Những Nhẵn
+# tên hàm
+set label 'y = kx + b' font 'TimesNewRoman, 10' at 1,4  front textcolor "#000000"  left
+set label 'y = kx + b_1' font 'TimesNewRoman, 10' at 2,0.9  front textcolor "#000000"  left
+
+# tên điểm
+set label  'Q' font 'TimesNewRoman, 8' at -3.5,0.3  front textcolor "#000000" center
+set label  'p' font 'TimesNewRoman, 8' at -1.5,1.6  front textcolor "#000000" center
+set label  'B = (0; b)' font 'TimesNewRoman, 8' at -1,2.5  front textcolor "#000000" center
+set label  'B_1 = (0; b_1)' font 'TimesNewRoman, 8' at 1.1,-1.1  front textcolor "#000000" center
+
+set label  'M = (x_0; y_0)' font 'TimesNewRoman, 8' at 2.3,1.8  front textcolor "#000000" center
+
+set label  'l' font 'TimesNewRoman, 8' at 4.1,5  front textcolor "#000000" center
+set label  'l_1' font 'TimesNewRoman, 8' at 4.2,2  front textcolor "#000000" center
+
+set label  'α' font 'TimesNewRoman, 8' at -2,0.3  front textcolor "#000000" center
+set label  'α' font 'TimesNewRoman, 8' at -0.5,1  front textcolor "#000000" center
+set label  'α' font 'TimesNewRoman, 8' at 2,0.5  front textcolor "#000000" center
+
+
+
+# ===== Đồ Thị
+set style line 2 linecolor rgb '#80eeff' linetype 1 linewidth 0.8
+set grid back ls 2
+
+# ==== Trục
+# Phạm vi trục
+set xrange[-4:4]
+set yrange[-2:6]
+
+# Tên trục
+set label 'y' font 'TimesNewRoman, 10' at first 0, graph 1 offset -1,0.5 center
+set label 'x' font 'TimesNewRoman, 10' at graph 1, first 0 offset 1,-0.5 rotate by 1.5708 center
+
+# ==== Bước trục
+set border 0 back
+# set tics nomirror 
+set xtics 1
+set ytics 1
+set tics scale 0.0
+set format x ""
+set format y ""
+#unset xtics
+#unset ytics
+
+
+set style line 4 linecolor rgb '#4500d3' linetype 0 linewidth 0.8
+
+
+# ==== Mũi tên kiểu 3 cho trục
+set arrow 3 from graph 0.0,0.25 to graph 1.05,0.25 size screen 0.025,15,60 \
+    filled ls 4 lt 1 lc '#9400d3'
+set arrow from graph 0.5,0 to graph 0.5,1.05 size screen 0.025,15,60 \
+    filled ls 4 lt 1 lc '#4500d3'
+
+# Phong Cách Điểm
+set pointsize 1.5
+set style line 7 lc rgb '#000000' pt 5   # square
+set style line 8 lc rgb '#000000' pt 7   # circle
+set style line 9 lc rgb '#0060ad' pt 9   # triangle
+
+# Điểm
+k = 0.7;
+b = 2.2
+b1 = -0.8
+x0 = 0;   y0 = b  # B
+x1 = 0;   y1 = b1  # B_1
+
+x2 = -b/k;    y2 = 0  # Q
+x3 = 3.5;     y3 = k*x3 + b_1  # M
+
+# kx + b_1 = -x/k + b --> (k + 1/k)x = b - b_1
+x4 = -(b - b_1)/(k + 1/k);  y4 = k*x4 + b
+
+
+# ==== cho vẽ nét
+set arrow from x1,y1 to x4,y4 nohead lw 0.6 lt 0 lc '#000080'
+
+
+# ==== Vẽ Hàm
+# Hàm
+set style line 1 linecolor rgb '#0000ff' linetype 1 linewidth 0.8
+set style line 2 linecolor rgb '#0080ff' linetype 1 linewidth 0.8
+set style line 3 linecolor rgb '#ff001f' linetype 1 linewidth 0.8
+set style line 4 linecolor rgb '#ff007f' linetype 1 linewidth 0.8
+
+
+f(x) = k*x + b
+g(x) = k*x + b1
+
+# Vẽ
+plot f(x) notitle with lines ls 1, \
+     g(x) notitle with lines ls 2, \
+      '+' using (x0):(y0) notitle w p ls 8 ps 0.3 lc rgb '#000000', \
+      '+' using (x1):(y1) notitle w p ls 8 ps 0.3 lc rgb '#000000', \
+      '+' using (x2):(y2) notitle w p ls 8 ps 0.3 lc rgb '#000000', \
+      '+' using (x3):(y3) notitle w p ls 8 ps 0.3 lc rgb '#000000', \
+      '+' using (x4):(y4) notitle w p ls 8 ps 0.3 lc rgb '#000000'

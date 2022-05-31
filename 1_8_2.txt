@@ -1,0 +1,115 @@
+# cd ../../../Applications
+# cd ./gnuplot.app/Contents/macos/
+# ./gnuplot.sh
+# Hình 1_8_2
+
+reset
+
+# Đặt SVG
+set terminal svg size 200, 200
+set output '1_8_2.svg'
+
+#set title '????' font 'TimesNewRoman, 10'
+
+
+# ==== Những Nhẵn
+# tên hàm
+#set label 'y = y_0(x)' font 'TimesNewRoman, 10' at 1.1,.5  front textcolor "#000000"  left
+
+
+
+# tên điểm
+set label  '0' font 'TimesNewRoman, 8' at 0.8,0.15  front textcolor "#000000" left
+set label  'π/4' font 'TimesNewRoman, 8' at 0.8,0.8  front textcolor "#000000" left
+set label  'π/2' font 'TimesNewRoman, 8' at 0.05,1.15  front textcolor "#000000" left
+set label  '3π/4' font 'TimesNewRoman, 8' at -1.2,0.8  front textcolor "#000000" left
+set label  'π' font 'TimesNewRoman, 8' at -1.2,0.15  front textcolor "#000000" left
+set label  '5π/4' font 'TimesNewRoman, 8' at -1.2,-0.8  front textcolor "#000000" left
+set label  '3π/2' font 'TimesNewRoman, 8' at 0.05,-1.15  front textcolor "#000000" left
+set label  '7π/4' font 'TimesNewRoman, 8' at 0.8,-0.8  front textcolor "#000000" left
+set label  '2π' font 'TimesNewRoman, 8' at 1.1,0.15  front textcolor "#000000" left
+
+
+#–
+
+# ===== Đồ Thị
+set style line 10 linecolor rgb '#80eeff' linetype 1 linewidth 0.5
+set grid back ls 10
+
+# ==== Trục
+# Phạm vi trục
+set xrange[-2:2]
+set yrange[-2:2]
+
+# Tên trục
+set label 'y' font 'TimesNewRoman, 10' at first 0, graph 1 offset -1,0.5 center
+set label 'x' font 'TimesNewRoman, 10' at graph 1, first 0 offset 1,-0.5 rotate by 1.5708 center
+
+# ==== Bước trục
+set border 0 back
+# set tics nomirror 
+#set zeroaxis
+set xtics 1
+set ytics 1
+set tics scale 0.0
+set format x ""
+set format y ""
+#unset xtics
+#unset ytics
+
+set style line 6 linecolor rgb '#4500d3' linetype 0 linewidth 0.8
+
+
+# ==== Mũi tên kiểu 3 cho trục
+set arrow 3 from graph 0.0,0.5 to graph 1.05,0.5 size screen 0.025,15,60 \
+    filled ls 6 lt 1 lc '#9400d3'
+set arrow from graph 0.5,0 to graph 0.5,1.05 size screen 0.025,15,60 \
+    filled ls 6 lt 1 lc '#4500d3'
+
+# Phong Cách Điểm
+set pointsize 1.5
+set style line 7 lc rgb '#000000' pt 5   # square
+set style line 8 lc rgb '#000000' pt 7   # circle
+set style line 9 lc rgb '#0060ad' pt 9   # triangle
+
+# Điểm
+x0 = 0;    y0 = 2.8  # 0
+x1 = 0.707;  y1 = 0.707    # π/4
+x2 = 0;  y2 = 1    # π/2
+x3 = -0.707;  y3 = 0.707    # 3π/4
+x4 = -1;  y4 = 0    # π
+x5 = -0.707;  y5 = -0.707    # 5π/4
+x6 = 0;  y6 = -1    # 3π/2
+x7 = 0.707;  y7 = -0.707    # 7π/4
+#x8 = 1;  y8 = 0    # 2π = 0
+
+# ==== cho vẽ nét
+#set arrow from x0,0 to x0,y0 nohead lw 0.6 lt 0 lc '#000080'
+#set arrow from 0,y0 to x0,y0 nohead lw 0.6 lt 0 lc '#000080'
+
+
+
+# ==== Vẽ Hàm
+# Danh Sách Hàm
+set style line 1 linecolor rgb '#0000ff' linetype 1 linewidth 0.8
+set style line 2 linecolor rgb '#007fff' linetype 1 linewidth 0.8
+set style line 3 linecolor rgb '#ff007f' linetype 1 linewidth 0.8
+set style line 4 linecolor rgb '#ff7f00' linetype 1 linewidth 0.8
+set style line 5 linecolor rgb '#ff7f00' linetype 1 linewidth 0.8
+
+# ==== cho vẽ vòng tròn
+r = 1
+set parametric
+
+
+
+# Vẽ
+plot  [0:2*pi] r*cos(t), r*sin(t) notitle with lines ls 1, \
+      '+' using (x0):(y0) notitle w p ls 8 ps 0.3 lc rgb '#000000', \
+      '+' using (x1):(y1) notitle w p ls 8 ps 0.3 lc rgb '#000000', \
+      '+' using (x2):(y2) notitle w p ls 8 ps 0.3 lc rgb '#000000', \
+      '+' using (x3):(y3) notitle w p ls 8 ps 0.3 lc rgb '#000000', \
+      '+' using (x4):(y4) notitle w p ls 8 ps 0.3 lc rgb '#000000', \
+      '+' using (x5):(y5) notitle w p ls 8 ps 0.3 lc rgb '#000000', \
+      '+' using (x6):(y6) notitle w p ls 8 ps 0.3 lc rgb '#000000', \
+      '+' using (x7):(y7) notitle w p ls 8 ps 0.3 lc rgb '#000000'
