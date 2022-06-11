@@ -18,11 +18,11 @@ set label 'z = z_0 + vt' font 'TimesNewRoman, 10' at 4,5  front textcolor "#0000
 
 
 # tên điểm
-set label  'z(t_1)' font 'TimesNewRoman, 8' at -0.7,2.8  front textcolor "#000000" left
-set label  'z(t_2)' font 'TimesNewRoman, 8' at -0.7,3.8  front textcolor "#000000" left
-set label  '∆z' font 'TimesNewRoman, 8' at 0.8,3.3  front textcolor "#000000" left
+set label  'z(t_1)' font 'TimesNewRoman, 8' at -0.8,3.0  front textcolor "#000000" left
+set label  'z(t_2)' font 'TimesNewRoman, 8' at -0.8,4.45  front textcolor "#000000" left
+set label  '∆z' font 'TimesNewRoman, 8' at 0.55,3.7  front textcolor "#000000" left
 
-set label  'z_0' font 'TimesNewRoman, 8' at 0.8,2.3  front textcolor "#000000" left
+set label  'z_0' font 'TimesNewRoman, 8' at 0.55,1.1  front textcolor "#000000" left
 
 set label  't_1' font 'TimesNewRoman, 8' at 2,-0.3  front textcolor "#000000" left
 set label  't_2' font 'TimesNewRoman, 8' at 4,-0.3  front textcolor "#000000" left
@@ -60,6 +60,7 @@ set style line 4 linecolor rgb '#4500d3' linetype 0 linewidth 0.8
 
 
 # ==== Mũi tên kiểu 3 cho trục
+set arrow 3
 set arrow 3 from graph 0.0,0.25 to graph 1.05,0.25 size screen 0.025,15,60 \
     filled ls 4 lt 1 lc '#9400d3'
 set arrow from graph 0.25,0 to graph 0.25,1.05 size screen 0.025,15,60 \
@@ -74,9 +75,12 @@ set style line 7 lc rgb '#0060ad' pt 9   # triangle
 # Điểm
 k = 0.65  # góc đường thẳng
 t0 = 2.1;    z0 = k*t0 + 1.6
-t1 = 4.3;      z1 = k*t1 + 1.6
+t1 = 4.3;    z1 = k*t1 + 1.6
 
 # ==== cho vẽ nét
+set arrow from t0,0.3 to t1,0.3 heads size screen 0.025,15,60 filled lw 0.6 lt 1 lc '#000080'
+set arrow from 0.3,z0 to 0.3,z1 heads size screen 0.025,15,60 filled lw 0.6 lt 1 lc '#000080'
+
 set arrow from t0,0 to t0,z0 nohead lw 0.6 lt 0 lc '#000080'
 set arrow from t1,0 to t1,z1 nohead lw 0.6 lt 0 lc '#000080'
 
@@ -84,9 +88,7 @@ set arrow from 0,z0 to t0,z0 nohead lw 0.6 lt 0 lc '#000080'
 set arrow from 0,z1 to t1,z1 nohead lw 0.6 lt 0 lc '#000080'
 
 
-set arrow 3 from t0,0.3 to t1,0.3 heads lw 0.6 lt 1 lc '#000080'
 
-set arrow from 0.3,z0 to 0.3,z1 heads lw 0.6 lt 1 lc '#000080'
 
 
 # ==== Vẽ Hàm
